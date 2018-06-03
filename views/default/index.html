@@ -57,9 +57,12 @@
         </div>
 
         <div class="button_bar">
-            <button v-if="!isAddingGame" class="btn" v-on:click="addGameButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
+            <button v-if="!isAddingGame && userEmail !== null" class="btn" v-on:click="addGameButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
                 <i class="fa fa-plus"></i> Add Game
             </button>
+            <div v-if="!userEmail" class="login_button">
+                <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
+            </div>
             <button v-if="isAddingGame" class="btn red" v-on:click="addGame()">
                 <i class="fa fa-plus"></i> Add
             </button>
@@ -95,10 +98,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-
-        <div v-if="!userEmail" class="login_button">
-            <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
         </div>
 
     </div>
