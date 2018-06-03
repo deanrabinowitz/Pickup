@@ -50,6 +50,7 @@ var app = function() {
       {
         title: self.vue.formTitle,
         activity: self.vue.formActivity,
+        level: self.vue.formLevel,
         time: self.vue.formTime,
         location: self.vue.formLocation,
         description: self.vue.formDescription
@@ -63,6 +64,7 @@ var app = function() {
         self.vue.formLocation = "";
         self.vue.formActivity = "";
         self.vue.formTime = "";
+        self.vue.formLevel = "";
       }
     );
   };
@@ -102,6 +104,7 @@ var app = function() {
       formTitle: null,
       formDescription: null,
       formActivity: "activity",
+      formLevel: "Level",
       formLocation: null,
       formTime: null
     },

@@ -21,12 +21,20 @@
                 </div>
                 <select v-model="formActivity">
                     <option value="activity">Activity</option>
+                    <option value="basketball">Baseball</option>
                     <option value="basketball">Basketball</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="basketball">Basketball</option>
+                    <option value="football">Football</option>
+                    <option value="soccer">Soccer</option>
+                    <option value="tennis">Tennis</option>
+                    <option value="ultimate_frisbee">Ultimate Frisbee</option>
+                    <option value="volleyball">Volleyball</option>
+                </select>
+                <select v-model="formLevel">
+                    <option value="level">Level</option>
+                    <option value="all_levels">All levels</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
                 </select>
                 <div class="form-group">
                     <div>
@@ -64,7 +72,10 @@
         <div v-for="game in games" class="game">
             <div class="game_text">
                 <div class="game_title">${game.title}</div>
-                <div class="game_content">${game.body}</div>
+                <div class="game_content">${game.activity}</div>
+                <div class="game_content">${game.time}</div>
+                <div class="game_content">${game.location}</div>
+                <div class="game_content">${game.description}</div>
             </div>
             <div class="button_list">
                 <div v-if="game.user_email == userEmail" class="buttons">
