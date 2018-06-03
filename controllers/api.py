@@ -3,12 +3,8 @@
 def get_games():
     start_idx = int(request.vars.start_idx) if request.vars.start_idx is not None else 0
     end_idx = int(request.vars.end_idx) if request.vars.end_idx is not None else 0
-    if auth.user is not None:
-        rows = db(db.game.user_email == auth.user.email).select()
-        logged_in = True
-    else:
-        rows = None
-        logged_in = False
+    rows = db().select(db.game.ALL)
+    logged_in = auth.user is not None
     games = []
     has_more = False
     for i, r in enumerate(rows):
