@@ -4,7 +4,6 @@
     var gamesURL = "{{=URL('api', 'get_games', hash_vars=False)}}";
     var addGameURL = "{{=URL('api', 'add_game', user_signature=True)}}";
     var getUserURL = "{{=URL('api', 'get_user')}}";
-    var togglePublicURL = "{{=URL('api', 'toggle_public', user_signature=True)}}"
     var deleteGameURL = "{{=URL('api', 'delete_game', user_signature=True)}}";
 </script> {{end}}
 
@@ -79,10 +78,6 @@
             </div>
             <div class="button_list">
                 <div v-if="game.userEmail == userEmail" class="buttons">
-                    <a class="btn rounded" v-on:click="togglePublic(game)">
-                        <i v-if="game.isPublic" class="fa fa-users"></i>
-                        <i v-else class="fa fa-user fa-lg"></i>
-                    </a>
                     <a class="btn rounded">
                         <i class="fa fa-edit fa-lg"></i>
                     </a>
@@ -91,10 +86,6 @@
                     </a>
                 </div>
                 <div v-else class="buttons">
-                    <a class="btn rounded" style="background-color: gray">
-                        <i v-if="game.isPublic" class="fa fa-users fa-lg"></i>
-                        <i v-else class="fa fa-user fa-lg"></i>
-                    </a>
                     <a class="btn rounded" style="background-color: gray">
                         <i class="fa fa-edit fa-lg"></i>
                     </a>

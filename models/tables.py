@@ -20,14 +20,11 @@ db.define_table('game',
                 Field('activity', 'text'),
                 Field('game_time', 'text'),
                 Field('game_location', 'text'),
-                Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
-                Field('is_public', 'boolean', default=False)
+                Field('updated_on', 'datetime', update=datetime.datetime.utcnow())
                 )
 
 db.game.user_email.writable = False
 db.game.user_email.readable = False
-db.game.is_public.writable = False
-db.game.is_public.readable = False
 db.game.updated_on.writable = db.game.updated_on.readable = False
 db.game.id.writable = db.game.id.readable = False
 

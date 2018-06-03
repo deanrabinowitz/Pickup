@@ -77,12 +77,6 @@ var app = function() {
     self.vue.isAddingGame = true;
   };
 
-  self.togglePublic = function(game) {
-    $.post(togglePublicURL, { id: game.id }, function(data) {
-      self.vue.games[game._idx].isPublic = !game.isPublic;
-    });
-  };
-
   self.deleteGame = function(game) {
     $.post(deleteGameURL, { id: game.id }, function(data) {
       self.vue.games.splice(game._idx, 1);
@@ -109,7 +103,6 @@ var app = function() {
       formTime: null
     },
     methods: {
-      togglePublic: self.togglePublic,
       addGameButton: self.addGameButton,
       getMore: self.getMore,
       addGame: self.addGame,
