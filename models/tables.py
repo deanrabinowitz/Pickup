@@ -16,7 +16,9 @@ def get_user_email():
 db.define_table('game',
                 Field('user_email', default=get_user_email()),
                 Field('title'),
-                Field('description', 'text'),
+                Field('activity', 'text'),
+                Field('time', 'text'),
+                Field('location', 'text'),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 Field('is_public', 'boolean', default=False)
                 )

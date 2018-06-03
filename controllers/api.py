@@ -17,6 +17,9 @@ def get_games():
                 id = r.id,
                 user_email = r.user_email,
                 title = r.title,
+                activity = r.activity,
+                time = r.time,
+                location = r.location,
                 description = r.description,
                 is_public = r.is_public
             )
@@ -33,6 +36,9 @@ def get_games():
 def add_game():
     game_id = db.game.insert(
         title = request.vars.title,
+        activity = request.vars.activity,
+        time = request.vars.time,
+        location = request.vars.location,
         description = request.vars.description,
         is_public = False,
         user_email = auth.user.email
@@ -40,6 +46,9 @@ def add_game():
     return response.json(dict(game=dict(
         id = game_id,
         title = request.vars.title,
+        activity = request.vars.activity,
+        time = request.vars.time,
+        location = request.vars.location,
         description = request.vars.description,
         is_public = False,
         user_email = auth.user.email
@@ -58,6 +67,9 @@ def toggle_public():
     return response.json(dict(game=dict(
         id = row.id,
         title = row.title,
+        activity = row.activity,
+        time = row.time,
+        location = row.location,
         description = row.description,
         is_public = row.is_public,
         user_email = row.user_email
