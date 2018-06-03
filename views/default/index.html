@@ -26,12 +26,12 @@
                     <option value="football">Football</option>
                     <option value="soccer">Soccer</option>
                     <option value="tennis">Tennis</option>
-                    <option value="ultimate_frisbee">Ultimate Frisbee</option>
+                    <option value="ultimateFrisbee">Ultimate Frisbee</option>
                     <option value="volleyball">Volleyball</option>
                 </select>
                 <select v-model="formLevel">
                     <option value="level">Level</option>
-                    <option value="all_levels">All levels</option>
+                    <option value="allLevels">All levels</option>
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
@@ -73,14 +73,14 @@
             <div class="game_text">
                 <div class="game_title">${game.title}</div>
                 <div class="game_content">${game.activity}</div>
-                <div class="game_content">${game.time}</div>
-                <div class="game_content">${game.location}</div>
+                <div class="game_content">${game.gameTime}</div>
+                <div class="game_content">${game.gameLocation}</div>
                 <div class="game_content">${game.description}</div>
             </div>
             <div class="button_list">
-                <div v-if="game.user_email == userEmail" class="buttons">
+                <div v-if="game.userEmail == userEmail" class="buttons">
                     <a class="btn rounded" v-on:click="togglePublic(game)">
-                        <i v-if="game.is_public" class="fa fa-users"></i>
+                        <i v-if="game.isPublic" class="fa fa-users"></i>
                         <i v-else class="fa fa-user fa-lg"></i>
                     </a>
                     <a class="btn rounded">
@@ -92,7 +92,7 @@
                 </div>
                 <div v-else class="buttons">
                     <a class="btn rounded" style="background-color: gray">
-                        <i v-if="game.is_public" class="fa fa-users fa-lg"></i>
+                        <i v-if="game.isPublic" class="fa fa-users fa-lg"></i>
                         <i v-else class="fa fa-user fa-lg"></i>
                     </a>
                     <a class="btn rounded" style="background-color: gray">

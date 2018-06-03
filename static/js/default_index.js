@@ -36,8 +36,8 @@ var app = function() {
   self.getGames = function() {
     $.getJSON(getGamesURL(0, 10), function(data) {
       self.vue.games = data.games;
-      self.vue.hasMore = data.has_more;
-      self.vue.loggedIn = data.logged_in;
+      self.vue.hasMore = data.hasMore;
+      self.vue.loggedIn = data.loggedIn;
       enumerate(self.vue.games);
     });
   };
@@ -51,8 +51,8 @@ var app = function() {
         title: self.vue.formTitle,
         activity: self.vue.formActivity,
         level: self.vue.formLevel,
-        time: self.vue.formTime,
-        location: self.vue.formLocation,
+        gameTime: self.vue.formTime,
+        gameLocation: self.vue.formLocation,
         description: self.vue.formDescription
       },
       function(data) {
@@ -79,7 +79,7 @@ var app = function() {
 
   self.togglePublic = function(game) {
     $.post(togglePublicURL, { id: game.id }, function(data) {
-      self.vue.games[game._idx].is_public = !game.is_public;
+      self.vue.games[game._idx].isPublic = !game.isPublic;
     });
   };
 

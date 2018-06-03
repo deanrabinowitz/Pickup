@@ -18,18 +18,18 @@ def get_games():
                 user_email = r.user_email,
                 title = r.title,
                 activity = r.activity,
-                game_time = r.game_time,
-                game_location = r.game_location,
+                gameTime = r.game_time,
+                gameLocation = r.game_location,
                 description = r.description,
-                is_public = r.is_public
+                isPublic = r.is_public
             )
             games.append(m)
         else:
             has_more = True
     return response.json(dict(
         games=games,
-        logged_in=logged_in,
-        has_more=has_more
+        loggedIn=logged_in,
+        hasMore=has_more
     ))
 
 @auth.requires_signature()
@@ -37,8 +37,8 @@ def add_game():
     game_id = db.game.insert(
         title = request.vars.title,
         activity = request.vars.activity,
-        game_time = request.vars.game_time,
-        game_location = request.vars.game_location,
+        game_time = request.vars.gameTime,
+        game_location = request.vars.gameLocation,
         description = request.vars.description,
         is_public = False,
         user_email = auth.user.email
@@ -47,11 +47,11 @@ def add_game():
         id = game_id,
         title = request.vars.title,
         activity = request.vars.activity,
-        game_time = request.vars.game_time,
-        game_location = request.vars.game_location,
+        gameTime = request.vars.game_time,
+        gameLocation = request.vars.game_location,
         description = request.vars.description,
-        is_public = False,
-        user_email = auth.user.email
+        isPublic = False,
+        userEmail = auth.user.email
     )))
 
 @auth.requires_signature()
