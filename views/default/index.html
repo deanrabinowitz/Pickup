@@ -46,9 +46,12 @@
                 </div> -->
 
         </div>
-        <div class="form-group">
-            <input id="timePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" style="display:none"
-                placeholder="When?">
+        <div class="form-group" id="timePicker" style="display:none">
+            <p>
+                <input type="text" class="date form-control string" autocomplete="off" placeholder="Date" />
+                <input type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="From" />
+                <input type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="To" />
+            </p>
         </div>
 
         <div v-if="isAddingGame">

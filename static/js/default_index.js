@@ -130,5 +130,17 @@ var APP = null;
 // for instance, self.x above would be accessible as APP.x
 jQuery(function() {
   APP = app();
-  $("#timePicker").timepicker();
+  // $("#timePicker").timepicker();
+  $("#timePicker .time").timepicker({
+    showDuration: true,
+    timeFormat: "g:ia"
+  });
+
+  $("#timePicker .date").datepicker({
+    format: "yyyy-m-d",
+    autoclose: true
+  });
+
+  // initialize datepair
+  // $("#timePicker").datepair();
 });
