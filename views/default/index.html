@@ -20,7 +20,7 @@
                 </div>
                 <select v-model="formActivity">
                     <option value="activity">Activity</option>
-                    <option value="basketball">Baseball</option>
+                    <option value="baseball">Baseball</option>
                     <option value="basketball">Basketball</option>
                     <option value="football">Football</option>
                     <option value="soccer">Soccer</option>
@@ -75,6 +75,7 @@
             <div class="game_text">
                 <div class="game_title">${game.title}</div>
                 <div class="game_content">${game.activity}</div>
+                <div class="game_content">${game.gameLevel}</div>
                 <div class="game_content">${game.gameTime}</div>
                 <div class="game_content">${game.gameLocation}</div>
                 <div class="game_content">${game.description}</div>
