@@ -15,7 +15,8 @@ def get_user_email():
 
 db.define_table('game',
                 Field('user_email', default=get_user_email()),
-                Field('title'),
+                Field('title', 'text'),
+                Field('description', 'text'),
                 Field('activity', 'text'),
                 Field('game_time', 'text'),
                 Field('game_location', 'text'),

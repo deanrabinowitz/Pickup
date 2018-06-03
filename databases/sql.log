@@ -1,5 +1,5 @@
-timestamp: 2018-05-09T20:38:22.572727
-CREATE TABLE "web2py_session_start"(
+timestamp: 2018-06-03T14:10:04.479703
+CREATE TABLE "web2py_session_Pickup"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "locked" CHAR(1),
     "client_ip" CHAR(64),
@@ -9,7 +9,7 @@ CREATE TABLE "web2py_session_start"(
     "session_data" BLOB
 );
 success!
-timestamp: 2018-05-09T20:38:22.585843
+timestamp: 2018-06-03T14:10:04.488437
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -21,21 +21,21 @@ CREATE TABLE "auth_user"(
     "registration_id" CHAR(512)
 );
 success!
-timestamp: 2018-05-09T20:38:22.597481
+timestamp: 2018-06-03T14:10:04.497565
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-timestamp: 2018-05-09T20:38:22.604944
+timestamp: 2018-06-03T14:10:04.502406
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
 );
 success!
-timestamp: 2018-05-09T20:38:22.612467
+timestamp: 2018-06-03T14:10:04.509143
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
@@ -44,7 +44,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-timestamp: 2018-05-09T20:38:22.623483
+timestamp: 2018-06-03T14:10:04.516432
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -54,7 +54,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-timestamp: 2018-05-09T20:38:22.632975
+timestamp: 2018-06-03T14:10:04.523630
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
@@ -64,126 +64,18 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-timestamp: 2018-05-10T13:30:55.224023
-CREATE TABLE "checklist"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "user_email" CHAR(512),
-    "title" CHAR(512),
-    "memo" TEXT,
-    "updated_on" TIMESTAMP,
-    "is_public" CHAR(1)
-);
-success!
-timestamp: 2018-05-10T18:51:24.055597
-CREATE TABLE "memo"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "user_email" CHAR(512),
-    "title" CHAR(512),
-    "body" TEXT,
-    "updated_on" TIMESTAMP,
-    "is_public" CHAR(1)
-);
-success!
-timestamp: 2018-06-02T18:04:15.170243
-CREATE TABLE "web2py_session_final"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "locked" CHAR(1),
-    "client_ip" CHAR(64),
-    "created_datetime" TIMESTAMP,
-    "modified_datetime" TIMESTAMP,
-    "unique_key" CHAR(64),
-    "session_data" BLOB
-);
-success!
-timestamp: 2018-06-02T18:28:30.599293
-CREATE TABLE "web2py_session_Pickup"(
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "locked" CHAR(1),
-    "client_ip" CHAR(64),
-    "created_datetime" TIMESTAMP,
-    "modified_datetime" TIMESTAMP,
-    "unique_key" CHAR(64),
-    "session_data" BLOB
-);
-success!
-timestamp: 2018-06-02T18:58:16.556779
+timestamp: 2018-06-03T14:10:04.534244
 CREATE TABLE "game"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_email" CHAR(512),
     "title" CHAR(512),
-    "body" TEXT,
+    "activity" TEXT,
+    "game_time" TEXT,
+    "game_location" TEXT,
     "updated_on" TIMESTAMP,
     "is_public" CHAR(1)
 );
 success!
-timestamp: 2018-06-02T19:20:36.585211
+timestamp: 2018-06-03T14:17:52.821902
 ALTER TABLE "game" ADD "description" TEXT;
-success!
-success!
-success!
-timestamp: 2018-06-02T19:39:58.081601
-ALTER TABLE "game" ADD "game_time" TEXT;
-timestamp: 2018-06-02T19:39:58.083426
-ALTER TABLE "game" ADD "game_location" TEXT;
-timestamp: 2018-06-02T19:39:58.098349
-ALTER TABLE "game" ADD "activity" TEXT;
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
 success!

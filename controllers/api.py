@@ -18,8 +18,8 @@ def get_games():
                 user_email = r.user_email,
                 title = r.title,
                 activity = r.activity,
-                time = r.game_time,
-                location = r.game_location,
+                game_time = r.game_time,
+                game_location = r.game_location,
                 description = r.description,
                 is_public = r.is_public
             )
@@ -37,8 +37,8 @@ def add_game():
     game_id = db.game.insert(
         title = request.vars.title,
         activity = request.vars.activity,
-        time = request.vars.game_time,
-        location = request.vars.game_location,
+        game_time = request.vars.game_time,
+        game_location = request.vars.game_location,
         description = request.vars.description,
         is_public = False,
         user_email = auth.user.email
@@ -47,8 +47,8 @@ def add_game():
         id = game_id,
         title = request.vars.title,
         activity = request.vars.activity,
-        time = request.vars.game_time,
-        location = request.vars.game_location,
+        game_time = request.vars.game_time,
+        game_location = request.vars.game_location,
         description = request.vars.description,
         is_public = False,
         user_email = auth.user.email
@@ -68,8 +68,8 @@ def toggle_public():
         id = row.id,
         title = row.title,
         activity = row.activity,
-        time = row.game_time,
-        location = row.game_location,
+        game_time = row.game_time,
+        game_location = row.game_location,
         description = row.description,
         is_public = row.is_public,
         user_email = row.user_email
