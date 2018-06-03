@@ -36,6 +36,7 @@ def add_game():
     game_id = db.game.insert(
         title = request.vars.title,
         activity = request.vars.activity,
+        game_level = request.vars.gameLevel,
         game_time = request.vars.gameTime,
         game_location = request.vars.gameLocation,
         description = request.vars.description,
@@ -45,6 +46,7 @@ def add_game():
         id = game_id,
         title = request.vars.title,
         activity = request.vars.activity,
+        gameLevel = request.vars.gameLevel,
         gameTime = request.vars.gameTime,
         gameLocation = request.vars.gameLocation,
         description = request.vars.description,

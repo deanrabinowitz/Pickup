@@ -50,7 +50,7 @@ var app = function() {
       {
         title: self.vue.formTitle,
         activity: self.vue.formActivity,
-        level: self.vue.formLevel,
+        gameLevel: self.vue.formLevel,
         gameTime: self.vue.formTime,
         gameLocation: self.vue.formLocation,
         description: self.vue.formDescription
