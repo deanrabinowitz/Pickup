@@ -51,30 +51,36 @@ var app = function() {
         title: self.vue.formTitle,
         activity: self.vue.formActivity,
         gameLevel: self.vue.formLevel,
-        gameTime: self.vue.formTime,
+        gameTime: $("#timePicker").val(),
         gameLocation: self.vue.formLocation,
         description: self.vue.formDescription
       },
       function(data) {
+        $("#timePicker").val("");
+        $("#timePicker").hide();
         self.vue.isAddingGame = false;
         self.vue.games.unshift(data.game);
         enumerate(self.vue.games);
         self.vue.formTitle = "";
         self.vue.formDescription = "";
         self.vue.formLocation = "";
-        self.vue.formActivity = "";
+        self.vue.formActivity = "activity";
         self.vue.formTime = "";
-        self.vue.formLevel = "";
+        self.vue.formLevel = "level";
       }
     );
   };
 
   self.cancelAddGame = function() {
     self.vue.isAddingGame = false;
+    $("#timePicker").val("");
+    $("#timePicker").hide();
   };
 
   self.addGameButton = function() {
     self.vue.isAddingGame = true;
+    $("#timePicker").show();
+    console.log("here");
   };
 
   self.deleteGame = function(game) {
@@ -100,7 +106,7 @@ var app = function() {
       formActivity: "activity",
       formLevel: "level",
       formLocation: null,
-      formTime: null
+      formTime: ""
     },
     methods: {
       addGameButton: self.addGameButton,
@@ -124,4 +130,5 @@ var APP = null;
 // for instance, self.x above would be accessible as APP.x
 jQuery(function() {
   APP = app();
+  $("#timePicker").timepicker();
 });
