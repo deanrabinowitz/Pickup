@@ -14,6 +14,7 @@ def get_games():
                 userEmail = r.user_email,
                 title = r.title,
                 activity = r.activity,
+                gameLevel = r.game_level,
                 gameTime = r.game_time,
                 gameLocation = r.game_location,
                 description = r.description,
