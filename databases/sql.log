@@ -116,3 +116,8 @@ CREATE TABLE "game"(
     "is_public" CHAR(1)
 );
 success!
+timestamp: 2018-06-02T19:20:36.585211
+ALTER TABLE "game" ADD "description" TEXT;
+success!
+success!
+success!

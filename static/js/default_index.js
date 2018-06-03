@@ -49,14 +49,20 @@ var app = function() {
       addGameURL,
       {
         title: self.vue.formTitle,
-        body: self.vue.formBody
+        activity: self.vue.formActivity,
+        time: self.vue.formTime,
+        location: self.vue.formLocation,
+        description: self.vue.formDescription
       },
       function(data) {
         self.vue.isAddingGame = false;
         self.vue.games.unshift(data.game);
         enumerate(self.vue.games);
         self.vue.formTitle = "";
-        self.vue.formBody = "";
+        self.vue.formDescription = "";
+        self.vue.formLocation = "";
+        self.vue.formActivity = "";
+        self.vue.formTime = "";
       }
     );
   };
@@ -94,7 +100,10 @@ var app = function() {
       loggedIn: true,
       userEmail: null,
       formTitle: null,
-      formBody: null
+      formDescription: null,
+      formActivity: null,
+      formLocation: null,
+      formTime: null
     },
     methods: {
       togglePublic: self.togglePublic,
