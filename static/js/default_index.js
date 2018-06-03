@@ -98,7 +98,7 @@ var app = function() {
       formTitle: null,
       formDescription: null,
       formActivity: "activity",
-      formLevel: "Level",
+      formLevel: "level",
       formLocation: null,
       formTime: null
     },
