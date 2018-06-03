@@ -121,3 +121,69 @@ ALTER TABLE "game" ADD "description" TEXT;
 success!
 success!
 success!
+timestamp: 2018-06-02T19:39:58.081601
+ALTER TABLE "game" ADD "game_time" TEXT;
+timestamp: 2018-06-02T19:39:58.083426
+ALTER TABLE "game" ADD "game_location" TEXT;
+timestamp: 2018-06-02T19:39:58.098349
+ALTER TABLE "game" ADD "activity" TEXT;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

@@ -101,7 +101,7 @@ var app = function() {
       userEmail: null,
       formTitle: null,
       formDescription: null,
-      formActivity: null,
+      formActivity: "activity",
       formLocation: null,
       formTime: null
     },
