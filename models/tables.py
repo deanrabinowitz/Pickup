@@ -13,7 +13,7 @@ def get_user_email():
     return auth.user.email if auth.user is not None else None
 
 
-db.define_table('memo',
+db.define_table('game',
                 Field('user_email', default=get_user_email()),
                 Field('title'),
                 Field('body', 'text'),
@@ -21,12 +21,12 @@ db.define_table('memo',
                 Field('is_public', 'boolean', default=False)
                 )
 
-db.memo.user_email.writable = False
-db.memo.user_email.readable = False
-db.memo.is_public.writable = False
-db.memo.is_public.readable = False
-db.memo.updated_on.writable = db.memo.updated_on.readable = False
-db.memo.id.writable = db.memo.id.readable = False
+db.game.user_email.writable = False
+db.game.user_email.readable = False
+db.game.is_public.writable = False
+db.game.is_public.readable = False
+db.game.updated_on.writable = db.game.updated_on.readable = False
+db.game.id.writable = db.game.id.readable = False
 
 
 # after defining tables, uncomment below to enable auditing

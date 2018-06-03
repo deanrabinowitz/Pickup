@@ -1,18 +1,18 @@
 {{extend 'layout.html'}} {{block head}}
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
-    var memosURL = "{{=URL('api', 'get_memos', hash_vars=False)}}";
-    var addMemoURL = "{{=URL('api', 'add_memo', user_signature=True)}}";
+    var gamesURL = "{{=URL('api', 'get_games', hash_vars=False)}}";
+    var addGameURL = "{{=URL('api', 'add_game', user_signature=True)}}";
     var getUserURL = "{{=URL('api', 'get_user')}}";
     var togglePublicURL = "{{=URL('api', 'toggle_public', user_signature=True)}}"
-    var deleteMemoURL = "{{=URL('api', 'delete_memo', user_signature=True)}}";
+    var deleteGameURL = "{{=URL('api', 'delete_game', user_signature=True)}}";
 </script> {{end}}
 
 <div class="main_content">
 
     <div id="vue-div" class="display:none">
 
-        <div v-if="isAddingMemo" id="addMemoDiv">
+        <div v-if="isAddingGame" id="addGameDiv">
             <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <div>
@@ -29,38 +29,38 @@
         </div>
 
         <div class="button_bar">
-            <button v-if="!isAddingMemo" class="btn" v-on:click="addMemoButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
-                <i class="fa fa-plus"></i> Add Memo
+            <button v-if="!isAddingGame" class="btn" v-on:click="addGameButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
+                <i class="fa fa-plus"></i> Add Game
             </button>
-            <button v-if="isAddingMemo" class="btn red" v-on:click="addMemo()">
+            <button v-if="isAddingGame" class="btn red" v-on:click="addGame()">
                 <i class="fa fa-plus"></i> Add
             </button>
-            <button v-if="isAddingMemo" class="btn" v-on:click="cancelAddMemo()">
+            <button v-if="isAddingGame" class="btn" v-on:click="cancelAddGame()">
                 <i class="fa fa-times"></i> Cancel
             </button>
         </div>
 
-        <div v-for="memo in memos" class="memo">
-            <div class="memo_text">
-                <div class="memo_title">${memo.title}</div>
-                <div class="memo_content">${memo.body}</div>
+        <div v-for="game in games" class="game">
+            <div class="game_text">
+                <div class="game_title">${game.title}</div>
+                <div class="game_content">${game.body}</div>
             </div>
             <div class="button_list">
-                <div v-if="memo.user_email == userEmail" class="buttons">
-                    <a class="btn rounded" v-on:click="togglePublic(memo)">
-                        <i v-if="memo.is_public" class="fa fa-users"></i>
+                <div v-if="game.user_email == userEmail" class="buttons">
+                    <a class="btn rounded" v-on:click="togglePublic(game)">
+                        <i v-if="game.is_public" class="fa fa-users"></i>
                         <i v-else class="fa fa-user fa-lg"></i>
                     </a>
                     <a class="btn rounded">
                         <i class="fa fa-edit fa-lg"></i>
                     </a>
-                    <a class="btn rounded red" v-on:click="deleteMemo(memo)">
+                    <a class="btn rounded red" v-on:click="deleteGame(game)">
                         <i class="fa fa-trash fa-lg"></i>
                     </a>
                 </div>
                 <div v-else class="buttons">
                     <a class="btn rounded" style="background-color: gray">
-                        <i v-if="memo.is_public" class="fa fa-users fa-lg"></i>
+                        <i v-if="game.is_public" class="fa fa-users fa-lg"></i>
                         <i v-else class="fa fa-user fa-lg"></i>
                     </a>
                     <a class="btn rounded" style="background-color: gray">

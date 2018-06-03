@@ -18,27 +18,27 @@ div.add_btn a {
 }
 
 /* line 16, ../sass/_main.scss */
-div.memo {
+div.game {
   margin: 5px;
   border: 2px solid gray;
   padding: 5px;
 }
 /* line 21, ../sass/_main.scss */
-div.memo div.memo_title {
+div.game div.game_title {
   font-weight: bold;
   font-size: 150%;
 }
 /* line 25, ../sass/_main.scss */
-div.memo div.button_list {
+div.game div.button_list {
   text-align: right;
   margin-top: 10px;
 }
 /* line 27, ../sass/_main.scss */
-div.memo div.button_list div.buttons {
+div.game div.button_list div.buttons {
   display: inline-block;
 }
 /* line 31, ../sass/_main.scss */
-div.memo div.button_list a.btn {
+div.game div.button_list a.btn {
   padding: 10px;
 }
 

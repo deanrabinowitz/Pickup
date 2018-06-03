@@ -106,3 +106,13 @@ CREATE TABLE "web2py_session_Pickup"(
     "session_data" BLOB
 );
 success!
+timestamp: 2018-06-02T18:58:16.556779
+CREATE TABLE "game"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_email" CHAR(512),
+    "title" CHAR(512),
+    "body" TEXT,
+    "updated_on" TIMESTAMP,
+    "is_public" CHAR(1)
+);
+success!

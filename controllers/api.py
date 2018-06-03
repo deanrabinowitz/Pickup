@@ -1,17 +1,15 @@
 # Here go your api methods.
 
-def get_memos():
-    print('get memos')
-    print(request.vars)
+def get_games():
     start_idx = int(request.vars.start_idx) if request.vars.start_idx is not None else 0
     end_idx = int(request.vars.end_idx) if request.vars.end_idx is not None else 0
     if auth.user is not None:
-        rows = db((db.memo.user_email == auth.user.email) | (db.memo.is_public == True)).select()
+        rows = db((db.game.user_email == auth.user.email) | (db.game.is_public == True)).select()
         logged_in = True
     else:
-        rows = db(db.memo.is_public == True).select()
+        rows = db(db.game.is_public == True).select()
         logged_in = False
-    memos = []
+    games = []
     has_more = False
     for i, r in enumerate(rows):
         if i < end_idx - start_idx:
@@ -22,26 +20,25 @@ def get_memos():
                 body = r.body,
                 is_public = r.is_public
             )
-            memos.append(m)
+            games.append(m)
         else:
             has_more = True
-    print(memos)
     return response.json(dict(
-        memos=memos,
+        games=games,
         logged_in=logged_in,
         has_more=has_more
     ))
 
 @auth.requires_signature()
-def add_memo():
-    memo_id = db.memo.insert(
+def add_game():
+    game_id = db.game.insert(
         title = request.vars.title,
         body = request.vars.body,
         is_public = False,
         user_email = auth.user.email
     )
-    return response.json(dict(memo=dict(
-        id = memo_id,
+    return response.json(dict(game=dict(
+        id = game_id,
         title = request.vars.title,
         body = request.vars.body,
         is_public = False,
@@ -49,16 +46,16 @@ def add_memo():
     )))
 
 @auth.requires_signature()
-def delete_memo():
-    db((db.memo.id == request.vars.id) & (db.memo.user_email == auth.user.email)).delete()
+def delete_game():
+    db((db.game.id == request.vars.id) & (db.game.user_email == auth.user.email)).delete()
 
 @auth.requires_signature()
 def toggle_public():
-    row = db((db.memo.id == request.vars.id) & (db.memo.user_email == auth.user.email)).select().first()
+    row = db((db.game.id == request.vars.id) & (db.game.user_email == auth.user.email)).select().first()
     print(row)
     original = row.is_public
     row.update_record(is_public=(not original))
-    return response.json(dict(memo=dict(
+    return response.json(dict(game=dict(
         id = row.id,
         title = row.title,
         body = row.body,

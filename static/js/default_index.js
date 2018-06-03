@@ -19,12 +19,12 @@ var app = function() {
     });
   };
 
-  function getMemosURL(startIdx, endIdx) {
+  function getGamesURL(startIdx, endIdx) {
     var pp = {
       start_idx: startIdx,
       end_idx: endIdx
     };
-    return memosURL + "?" + $.param(pp);
+    return gamesURL + "?" + $.param(pp);
   }
 
   self.getUser = function() {
@@ -33,52 +33,52 @@ var app = function() {
     });
   };
 
-  self.getMemos = function() {
-    $.getJSON(getMemosURL(0, 10), function(data) {
-      self.vue.memos = data.memos;
+  self.getGames = function() {
+    $.getJSON(getGamesURL(0, 10), function(data) {
+      self.vue.games = data.games;
       self.vue.hasMore = data.has_more;
       self.vue.loggedIn = data.logged_in;
-      enumerate(self.vue.memos);
+      enumerate(self.vue.games);
     });
   };
 
   self.getMore = function() {};
 
-  self.addMemo = function() {
+  self.addGame = function() {
     $.post(
-      addMemoURL,
+      addGameURL,
       {
         title: self.vue.formTitle,
         body: self.vue.formBody
       },
       function(data) {
-        self.vue.isAddingMemo = false;
-        self.vue.memos.unshift(data.memo);
-        enumerate(self.vue.memos);
+        self.vue.isAddingGame = false;
+        self.vue.games.unshift(data.game);
+        enumerate(self.vue.games);
         self.vue.formTitle = "";
         self.vue.formBody = "";
       }
     );
   };
 
-  self.cancelAddMemo = function() {
-    self.vue.isAddingMemo = false;
+  self.cancelAddGame = function() {
+    self.vue.isAddingGame = false;
   };
 
-  self.addMemoButton = function() {
-    self.vue.isAddingMemo = true;
+  self.addGameButton = function() {
+    self.vue.isAddingGame = true;
   };
 
-  self.togglePublic = function(memo) {
-    $.post(togglePublicURL, { id: memo.id }, function(data) {
-      self.vue.memos[memo._idx].is_public = !memo.is_public;
+  self.togglePublic = function(game) {
+    $.post(togglePublicURL, { id: game.id }, function(data) {
+      self.vue.games[game._idx].is_public = !game.is_public;
     });
   };
 
-  self.deleteMemo = function(memo) {
-    $.post(deleteMemoURL, { id: memo.id }, function(data) {
-      self.vue.memos.splice(memo._idx, 1);
-      enumerate(self.vue.memos);
+  self.deleteGame = function(game) {
+    $.post(deleteGameURL, { id: game.id }, function(data) {
+      self.vue.games.splice(game._idx, 1);
+      enumerate(self.vue.games);
     });
   };
 
@@ -88,8 +88,8 @@ var app = function() {
     delimiters: ["${", "}"],
     unsafeDelimiters: ["!{", "}"],
     data: {
-      isAddingMemo: false,
-      memos: [],
+      isAddingGame: false,
+      games: [],
       hasMore: false,
       loggedIn: true,
       userEmail: null,
@@ -98,15 +98,15 @@ var app = function() {
     },
     methods: {
       togglePublic: self.togglePublic,
-      addMemoButton: self.addMemoButton,
+      addGameButton: self.addGameButton,
       getMore: self.getMore,
-      addMemo: self.addMemo,
-      cancelAddMemo: self.cancelAddMemo,
-      deleteMemo: self.deleteMemo
+      addGame: self.addGame,
+      cancelAddGame: self.cancelAddGame,
+      deleteGame: self.deleteGame
     }
   });
 
-  self.getMemos();
+  self.getGames();
   self.getUser();
   $("#vue-div").show();
 
