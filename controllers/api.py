@@ -15,7 +15,7 @@ def get_games():
         if i < end_idx - start_idx:
             m = dict(
                 id = r.id,
-                user_email = r.user_email,
+                userEmail = r.user_email,
                 title = r.title,
                 activity = r.activity,
                 gameTime = r.game_time,
@@ -47,8 +47,8 @@ def add_game():
         id = game_id,
         title = request.vars.title,
         activity = request.vars.activity,
-        gameTime = request.vars.game_time,
-        gameLocation = request.vars.game_location,
+        gameTime = request.vars.gameTime,
+        gameLocation = request.vars.gameLocation,
         description = request.vars.description,
         isPublic = False,
         userEmail = auth.user.email
