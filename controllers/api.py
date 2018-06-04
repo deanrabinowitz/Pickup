@@ -15,7 +15,9 @@ def get_games():
                 title = r.title,
                 activity = r.activity,
                 gameLevel = r.game_level,
-                gameTime = r.game_time,
+                startTime = r.start_time,
+                endTime = r.end_time,
+                gameDate = r.game_date,
                 gameLocation = r.game_location,
                 description = r.description,
             )
@@ -34,7 +36,9 @@ def add_game():
         title = request.vars.title,
         activity = request.vars.activity,
         game_level = request.vars.gameLevel,
-        game_time = request.vars.gameTime,
+        start_time = request.vars.startTime,
+        end_time = request.vars.endTime,
+        game_date = request.vars.gameDate,
         game_location = request.vars.gameLocation,
         description = request.vars.description,
         user_email = auth.user.email
@@ -44,7 +48,9 @@ def add_game():
         title = request.vars.title,
         activity = request.vars.activity,
         gameLevel = request.vars.gameLevel,
-        gameTime = request.vars.gameTime,
+        startTime = request.vars.startTime,
+        endTime = request.vars.endTime,
+        gameDate = request.vars.gameDate,
         gameLocation = request.vars.gameLocation,
         description = request.vars.description,
         userEmail = auth.user.email
