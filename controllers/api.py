@@ -79,6 +79,13 @@ def leave_game():
         row.update_record()
     return "ok"
 
+@auth.requires_signature()
+def add_comment():
+    db.game_comment.insert(
+        comment_content = request.vars.commentContent,
+        game = request.vars.gameID;
+    )
+
 def get_user():
     if auth.user is None:
         return None
