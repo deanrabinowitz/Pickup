@@ -19,14 +19,6 @@ var app = function() {
     });
   };
 
-  function getGamesURL(startIdx, endIdx) {
-    var pp = {
-      start_idx: startIdx,
-      end_idx: endIdx
-    };
-    return gamesURL + "?" + $.param(pp);
-  }
-
   self.getUser = function() {
     $.getJSON(getUserURL, function(data) {
       self.vue.user = data;
@@ -34,12 +26,21 @@ var app = function() {
   };
 
   self.getGames = function() {
-    $.getJSON(getGamesURL(0, 10), function(data) {
-      self.vue.games = data.games;
-      self.vue.hasMore = data.hasMore;
-      self.vue.loggedIn = data.loggedIn;
-      enumerate(self.vue.games);
-    });
+    $.post(
+      gamesURL,
+      {
+        start_idx: 0,
+        end_idx: 10,
+        activityFilter: self.vue.activityFilter,
+        levelFilter: self.vue.levelFilter
+      },
+      function(data) {
+        self.vue.games = data.games;
+        self.vue.hasMore = data.hasMore;
+        self.vue.loggedIn = data.loggedIn;
+        enumerate(self.vue.games);
+      }
+    );
   };
 
   self.getMore = function() {};
@@ -191,10 +192,12 @@ var app = function() {
       formComment: "",
       levels: self.getLevels(),
       activities: self.getActivities(),
-      filter: {
-        levels: self.getLevels(),
-        activities: self.getActivities()
-      }
+      activityFilter: self.vue.filter.activities.map(function(activity) {
+        return activity.value;
+      }),
+      levelFilter: self.vue.filter.levels.map(function(level) {
+        return level.value;
+      })
     },
     methods: {
       addGameButton: self.addGameButton,
