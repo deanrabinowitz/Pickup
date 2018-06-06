@@ -80,12 +80,11 @@ def leave_game():
     return "ok"
 
 def get_user():
-    email = None
-    user_id = None
-    if auth.user is not None:
-        email = auth.user.email
-        user_id = auth.user.id
+    if auth.user is None:
+        return None
     return response.json(dict(
-        email=email,
-        id=user_id
+        email=auth.user.email,
+        id=auth.user.id,
+        firstName=auth.user.first_name,
+        lastName=auth.user.last_name
     ))
