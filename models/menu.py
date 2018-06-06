@@ -29,7 +29,7 @@ response.google_analytics_id = None
 # ----------------------------------------------------------------------------------------------------------------------
 
 response.menu = [
-    (T('Home'), False, URL('default', 'index'), [])
+    (IMG(_src=URL('static','images/pickup_icon.jpg'), _alt="Pickup Logo"), False, URL('default', 'index'), [])
 ]
 
 DEVELOPMENT_MENU = True

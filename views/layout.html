@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}"> {{include "web2py_ajax.html"}}
 </head>
 
-<body class="banner-theme">
+<body>
   {{if response.flash:}}
   <div class="w2p_flash">
     {{=response.flash}}
@@ -37,16 +37,16 @@
       </div>
     </div>
   </header>
-  <main class="white">
+  <main class="background">
     {{include}}
   </main>
   <footer class="banner-accent">
-    <div class="silver center padded social">
+    <div class="center padded social">
       <a class="fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u={url}"></a>
       <a class="fa fa-twitter" href="https://twitter.com/home?status={url}"></a>
       <a class="fa fa-google" href="https://plus.google.com/share?url={url}"></a>
     </div>
-    <div class="container padded max900">
+    <div class="container padded banner-theme">
       <div class="fill">
         Copyright @ 2016
       </div>

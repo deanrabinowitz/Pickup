@@ -1,3 +1,7 @@
+main.background {
+  background: #fafafa
+}
+
 /* line 1, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
@@ -24,8 +28,11 @@ div.add_btn a {
 /* line 16, ../sass/_main.scss */
 div.game {
   margin: 10px;
-  border: 2px solid gray;
-  padding: 5px;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 20px;
+  background: white;
 }
 /* line 21, ../sass/_main.scss */
 div.game div.game_title {
