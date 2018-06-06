@@ -9,6 +9,7 @@ def get_games():
     has_more = False
     for i, r in enumerate(rows):
         if i < end_idx - start_idx:
+            # Get the comments for the game
             m = dict(
                 id = r.id,
                 userEmail = r.user_email,
@@ -21,6 +22,7 @@ def get_games():
                 gameLocation = r.game_location,
                 description = r.description,
                 players = r.players
+                comments = []
             )
             games.append(m)
         else:
