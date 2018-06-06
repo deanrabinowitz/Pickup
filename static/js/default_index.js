@@ -73,6 +73,19 @@ var app = function() {
     );
   };
 
+  self.addComment = function(gameID, commentContent) {
+    $.post(
+      addCommentURL,
+      {
+        gameID: gameID,
+        commentContent: commentContent
+      },
+      function(data) {
+        console.log(data);
+      }
+    );
+  };
+
   self.joinGame = function(game) {
     $.post(
       joinGameURL,
@@ -152,7 +165,8 @@ var app = function() {
       cancelAddGame: self.cancelAddGame,
       deleteGame: self.deleteGame,
       joinGame: self.joinGame,
-      leaveGame: self.leaveGame
+      leaveGame: self.leaveGame,
+      addComment: self.addComment
     }
   });
 
