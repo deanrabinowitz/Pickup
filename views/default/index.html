@@ -14,6 +14,10 @@
 
     <div id="vue-div" class="display:none">
 
+        <div class="center">
+            <img src="{{=URL('static', 'images/pickup_icon.jpg')}}" height="70px" width="200px" class="padded" />
+        </div>
+
         <div v-if="isAddingGame">
             <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
