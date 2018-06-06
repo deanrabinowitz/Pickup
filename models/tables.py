@@ -15,6 +15,9 @@ def get_user_email():
 def get_user_id():
     return auth.user.id if auth.user is not None else None
 
+def get_user_name():
+    return (auth.user.first_name + ' ' + auth.user.last_name[0] + '.') if auth.user is not None else None
+
 
 db.define_table('game',
                 Field('user_email', default=get_user_email()),
@@ -30,10 +33,11 @@ db.define_table('game',
                 Field('players', 'list:reference auth_user', default=[get_user_id()])
                 )
 
-db.define_table('comment',
-                Field('author','reference auth_user', default=get_user_id()),
+db.define_table('game_comment',
+                Field('author_id','reference auth_user', default=get_user_id()),
+                Field('author_name', 'text', default=get_user_name()),
                 Field('game','reference game'),
-                Field('content', 'text'),
+                Field('comment_content', 'text'),
                 Field('posted_on', 'datetime', default=datetime.datetime.utcnow())
                 )
 
