@@ -73,7 +73,19 @@ var app = function() {
     );
   };
 
-  self.addComment = function(gameID, commentContent) {
+  self.addComment = function(gameID, commentContent, game) {
+    if (commentContent === "") {
+      return;
+    }
+    self.vue.formComment = "";
+    var user = self.vue.user;
+    var comment = {
+      authorID: user.id,
+      author_name: user.firstName + " " + user.lastName[0] + ".",
+      comment_content: commentContent,
+      game: gameID
+    };
+    game.comments.push(comment);
     $.post(
       addCommentURL,
       {
@@ -81,6 +93,7 @@ var app = function() {
         commentContent: commentContent
       },
       function(data) {
+        // add the date to the comment
         console.log(data);
       }
     );
@@ -153,6 +166,7 @@ var app = function() {
       formActivity: "activity",
       formLevel: "level",
       formLocation: null,
+      formComment: "",
       levelFilter: null,
       activityFilter: null,
       locationFilter: null,

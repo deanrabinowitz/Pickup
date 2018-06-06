@@ -125,10 +125,13 @@
                 <button v-if="user != null && user.email != null && game.players.includes(user.id)" v-on:click="leaveGame(game)">Leave Game</button>
             </div>
             <hr>
+            <h6>Comments</h6>
             <div class="comments">
-                <div class="comment">
-
+                <div v-for="comment in game.comments" class="comment">
+                    <span class="comment-author-name">${comment.author_name}:</span>
+                    <span class="comment-content">${comment.comment_content}</span>
                 </div>
+                <input v-on:keyup.enter="addComment(game.id, formComment, game)" placeholder="Add a comment" v-model="formComment">
             </div>
         </div>
 

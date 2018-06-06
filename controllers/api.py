@@ -9,6 +9,7 @@ def get_games():
     has_more = False
     for i, r in enumerate(rows):
         if i < end_idx - start_idx:
+            comments = db(db.game_comment.game == r.id).select()
             # Get the comments for the game
             m = dict(
                 id = r.id,
@@ -21,8 +22,8 @@ def get_games():
                 gameDate = r.game_date,
                 gameLocation = r.game_location,
                 description = r.description,
-                players = r.players
-                comments = []
+                players = r.players,
+                comments = comments
             )
             games.append(m)
         else:
@@ -85,8 +86,9 @@ def leave_game():
 def add_comment():
     db.game_comment.insert(
         comment_content = request.vars.commentContent,
-        game = request.vars.gameID;
+        game = request.vars.gameID
     )
+    return "ok"
 
 def get_user():
     if auth.user is None:
