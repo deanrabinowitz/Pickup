@@ -12,6 +12,9 @@ import datetime
 def get_user_email():
     return auth.user.email if auth.user is not None else None
 
+def get_user_id():
+    return auth.user.id if auth.user is not None else None
+
 
 db.define_table('game',
                 Field('user_email', default=get_user_email()),
@@ -23,7 +26,8 @@ db.define_table('game',
                 Field('end_time', 'text'),
                 Field('game_date', 'text'),
                 Field('game_location', 'text'),
-                Field('updated_on', 'datetime', update=datetime.datetime.utcnow())
+                Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
+                Field('players', 'list:reference auth_user', default=[get_user_id()])
                 )
 
 db.game.user_email.writable = False

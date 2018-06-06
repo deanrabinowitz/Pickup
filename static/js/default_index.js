@@ -29,7 +29,7 @@ var app = function() {
 
   self.getUser = function() {
     $.getJSON(getUserURL, function(data) {
-      self.vue.userEmail = data.email;
+      self.vue.user = data;
     });
   };
 
@@ -73,6 +73,37 @@ var app = function() {
     );
   };
 
+  self.joinGame = function(game) {
+    $.post(
+      joinGameURL,
+      {
+        id: game.id
+      },
+      function(data) {
+        console.log(data);
+      }
+    );
+    if (!game.players.includes(self.vue.user.id)) {
+      game.players.push(self.vue.user.id);
+    }
+  };
+
+  self.leaveGame = function(game) {
+    $.post(
+      leaveGameURL,
+      {
+        id: game.id
+      },
+      function(data) {
+        console.log(data);
+      }
+    );
+    var index = game.players.indexOf(self.vue.user.id);
+    if (index >= 0) {
+      game.players.splice(index, 1);
+    }
+  };
+
   self.cancelAddGame = function() {
     self.vue.isAddingGame = false;
     $("#startTimePicker").val("");
@@ -103,7 +134,7 @@ var app = function() {
       games: [],
       hasMore: false,
       loggedIn: true,
-      userEmail: null,
+      user: null,
       formTitle: null,
       formDescription: null,
       formActivity: "activity",
@@ -119,7 +150,9 @@ var app = function() {
       getMore: self.getMore,
       addGame: self.addGame,
       cancelAddGame: self.cancelAddGame,
-      deleteGame: self.deleteGame
+      deleteGame: self.deleteGame,
+      joinGame: self.joinGame,
+      leaveGame: self.leaveGame
     }
   });
 

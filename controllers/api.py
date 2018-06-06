@@ -20,6 +20,7 @@ def get_games():
                 gameDate = r.game_date,
                 gameLocation = r.game_location,
                 description = r.description,
+                players = r.players
             )
             games.append(m)
         else:
@@ -53,17 +54,38 @@ def add_game():
         gameDate = request.vars.gameDate,
         gameLocation = request.vars.gameLocation,
         description = request.vars.description,
-        userEmail = auth.user.email
+        userEmail = auth.user.email,
+        players = [auth.user.id]
     )))
 
 @auth.requires_signature()
 def delete_game():
     db((db.game.id == request.vars.id) & (db.game.user_email == auth.user.email)).delete()
 
+@auth.requires_signature()
+def join_game():
+    row = db(db.game.id == request.vars.id).select().first()
+    print row.players
+    if auth.user.id not in row.players:
+        row.players.append(auth.user.id)
+        row.update_record()
+    return "ok"
+
+@auth.requires_signature()
+def leave_game():
+    row = db(db.game.id == request.vars.id).select().first()
+    if auth.user.id in row.players:
+        row.players.remove(auth.user.id)
+        row.update_record()
+    return "ok"
+
 def get_user():
     email = None
+    user_id = None
     if auth.user is not None:
         email = auth.user.email
+        user_id = auth.user.id
     return response.json(dict(
-        email=email
+        email=email,
+        id=user_id
     ))

@@ -8,6 +8,8 @@
     var addGameURL = "{{=URL('api', 'add_game', user_signature=True)}}";
     var getUserURL = "{{=URL('api', 'get_user')}}";
     var deleteGameURL = "{{=URL('api', 'delete_game', user_signature=True)}}";
+    var joinGameURL = "{{=URL('api', 'join_game', user_signature=True)}}"
+    var leaveGameURL = "{{=URL('api', 'leave_game', user_signature=True)}}"
 </script> {{end}}
 
 <div class="main_content">
@@ -73,10 +75,10 @@
 
 
         <div class="button_bar">
-            <button v-if="!isAddingGame && userEmail !== null" class="btn" v-on:click="addGameButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
+            <button v-if="!isAddingGame && user !== null" class="btn" v-on:click="addGameButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
                 <i class="fa fa-plus"></i> Add Game
             </button>
-            <div v-if="!userEmail" class="login_button">
+            <div v-if="!user" class="login_button">
                 <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
             </div>
             <button v-if="isAddingGame" class="btn red" v-on:click="addGame()">
@@ -98,7 +100,7 @@
                 <div class="game_content">${game.description}</div>
             </div>
             <div class="button_list">
-                <div v-if="game.userEmail == userEmail" class="buttons">
+                <div v-if="user != null && game.userEmail == user.email" class="buttons">
                     <a class="btn rounded">
                         <i class="fa fa-edit fa-lg"></i>
                     </a>
@@ -114,6 +116,12 @@
                         <i class="fa fa-trash fa-lg"></i>
                     </a>
                 </div>
+            </div>
+            <hr>
+            <div class="game-join">
+                ${game.players.length} ${game.players.length===1 ? "person" : "people"} joined
+                <button v-if="user != null && user.email != null && !game.players.includes(user.id)" v-on:click="joinGame(game)">Join Game</button>
+                <button v-if="user != null && user.email != null && game.players.includes(user.id)" v-on:click="leaveGame(game)">Leave Game</button>
             </div>
         </div>
 
