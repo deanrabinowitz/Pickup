@@ -19,7 +19,9 @@ db.define_table('game',
                 Field('description', 'text'),
                 Field('activity', 'text'),
                 Field('game_level', 'text'),
-                Field('game_time', 'text'),
+                Field('start_time', 'text'),
+                Field('end_time', 'text'),
+                Field('game_date', 'text'),
                 Field('game_location', 'text'),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow())
                 )

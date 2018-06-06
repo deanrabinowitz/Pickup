@@ -51,12 +51,15 @@ var app = function() {
         title: self.vue.formTitle,
         activity: self.vue.formActivity,
         gameLevel: self.vue.formLevel,
-        gameTime: $("#timePicker").val(),
+        startTime: $("#startTimePicker").val(),
+        endTime: $("#endTimePicker").val(),
+        gameDate: $("#datePicker").val(),
         gameLocation: self.vue.formLocation,
         description: self.vue.formDescription
       },
       function(data) {
-        $("#timePicker").val("");
+        $("#startTimePicker").val("");
+        $("#endTimePicker").val("");
         $("#timePicker").hide();
         self.vue.isAddingGame = false;
         self.vue.games.unshift(data.game);
@@ -65,7 +68,6 @@ var app = function() {
         self.vue.formDescription = "";
         self.vue.formLocation = "";
         self.vue.formActivity = "activity";
-        self.vue.formTime = "";
         self.vue.formLevel = "level";
       }
     );
@@ -73,7 +75,8 @@ var app = function() {
 
   self.cancelAddGame = function() {
     self.vue.isAddingGame = false;
-    $("#timePicker").val("");
+    $("#startTimePicker").val("");
+    $("#endTimePicker").val("");
     $("#timePicker").hide();
   };
 
@@ -106,7 +109,10 @@ var app = function() {
       formActivity: "activity",
       formLevel: "level",
       formLocation: null,
-      formTime: ""
+      levelFilter: null,
+      activityFilter: null,
+      locationFilter: null,
+      dateFilter: null
     },
     methods: {
       addGameButton: self.addGameButton,

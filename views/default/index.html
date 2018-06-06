@@ -38,19 +38,15 @@
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
                 </select>
-                <!-- <div class="form-group">
-                    <div>
-                        <textarea class="form-control string" v-model="formTime" placeholder="Time">
-                        </textarea>
-                    </div>
-                </div> -->
 
         </div>
         <div class="form-group" id="timePicker" style="display:none">
             <p>
-                <input type="text" class="date form-control string" autocomplete="off" placeholder="Date" />
-                <input type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="From" />
-                <input type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="To" />
+                <input id="datePicker" type="text" class="date form-control string" autocomplete="off" placeholder="Date" />
+                <input id="startTimePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="From"
+                />
+                <input id="endTimePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="To"
+                />
             </p>
         </div>
 
@@ -92,7 +88,8 @@
                 <div class="game_title">${game.title}</div>
                 <div class="game_content">${game.activity}</div>
                 <div class="game_content">${game.gameLevel}</div>
-                <div class="game_content">${game.gameTime}</div>
+                <div class="game_content">${game.gameDate}</div>
+                <div class="game_content">${game.startTime} - ${game.endTime}</div>
                 <div class="game_content">${game.gameLocation}</div>
                 <div class="game_content">${game.description}</div>
             </div>
