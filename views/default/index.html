@@ -29,21 +29,14 @@
                     </div>
                 </div>
                 <select v-model="formActivity">
-                    <option value="activity">Activity</option>
-                    <option value="baseball">Baseball</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="football">Football</option>
-                    <option value="soccer">Soccer</option>
-                    <option value="tennis">Tennis</option>
-                    <option value="ultimateFrisbee">Ultimate Frisbee</option>
-                    <option value="volleyball">Volleyball</option>
+                    <option v-for="option in activities" v-bind:value="option.value">
+                        ${option.text}
+                    </option>
                 </select>
                 <select v-model="formLevel">
-                    <option value="level">Level</option>
-                    <option value="allLevels">All levels</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
+                    <option v-for="option in levels" v-bind:value="option.value">
+                        ${option.text}
+                    </option>
                 </select>
 
         </div>
