@@ -150,6 +150,28 @@ var app = function() {
     });
   };
 
+  self.getLevels = function() {
+    return [
+      { text: "All Levels", value: "allLevels" },
+      { text: "Beginner", value: "beginner" },
+      { text: "Intermediate", value: "intermediate" },
+      { text: "Advanced", value: "advanced" }
+    ];
+  };
+
+  self.getActivities = function() {
+    return [
+      { text: "Baseball", value: "baseball" },
+      { text: "Basketball", value: "basketball" },
+      { text: "Football", value: "football" },
+      { text: "Soccer", value: "soccer" },
+      { text: "Tennis", value: "tennis" },
+      { text: "Ultimate Frisbee", value: "ultimateFrisbee" },
+      { text: "Volleyball", value: "volleyball" },
+      { text: "Other", value: "other" }
+    ];
+  };
+
   // Complete as needed.
   self.vue = new Vue({
     el: "#vue-div",
@@ -163,14 +185,16 @@ var app = function() {
       user: null,
       formTitle: null,
       formDescription: null,
-      formActivity: "activity",
-      formLevel: "level",
+      formActivity: "basketball",
+      formLevel: "allLevels",
       formLocation: null,
       formComment: "",
-      levelFilter: null,
-      activityFilter: null,
-      locationFilter: null,
-      dateFilter: null
+      levels: self.getLevels(),
+      activities: self.getActivities(),
+      filter: {
+        levels: self.getLevels(),
+        activities: self.getActivities()
+      }
     },
     methods: {
       addGameButton: self.addGameButton,

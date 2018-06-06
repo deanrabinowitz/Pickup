@@ -58,7 +58,8 @@ def add_game():
         gameLocation = request.vars.gameLocation,
         description = request.vars.description,
         userEmail = auth.user.email,
-        players = [auth.user.id]
+        players = [auth.user.id],
+        comments = []
     )))
 
 @auth.requires_signature()
