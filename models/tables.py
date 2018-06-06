@@ -30,6 +30,13 @@ db.define_table('game',
                 Field('players', 'list:reference auth_user', default=[get_user_id()])
                 )
 
+db.define_table('comment',
+                Field('author','reference auth_user', default=get_user_id()),
+                Field('game','reference game'),
+                Field('content', 'text'),
+                Field('posted_on', 'datetime', default=datetime.datetime.utcnow())
+                )
+
 db.game.user_email.writable = False
 db.game.user_email.readable = False
 db.game.updated_on.writable = db.game.updated_on.readable = False
