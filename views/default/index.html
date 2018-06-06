@@ -123,6 +123,12 @@
                 <button v-if="user != null && user.email != null && !game.players.includes(user.id)" v-on:click="joinGame(game)">Join Game</button>
                 <button v-if="user != null && user.email != null && game.players.includes(user.id)" v-on:click="leaveGame(game)">Leave Game</button>
             </div>
+            <hr>
+            <div class="comments">
+                <div class="comment">
+
+                </div>
+            </div>
         </div>
 
     </div>
