@@ -8,6 +8,10 @@ div.main_content {
   padding: 10px;
 }
 
+div.logo {
+  margin-bottom: 30px;
+}
+
 /* line 9, ../sass/_main.scss */
 div.add_btn {
   margin: 5px;
@@ -40,6 +44,10 @@ div.game div.button_list div.buttons {
 /* line 31, ../sass/_main.scss */
 div.game div.button_list a.btn div.game-join {
   padding: 10px;
+}
+
+div.button_bar {
+  margin-left: 10px;
 }
 
 div.game hr {
