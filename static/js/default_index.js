@@ -43,7 +43,23 @@ var app = function() {
     );
   };
 
-  self.getMore = function() {};
+  self.loadMore = function() {
+    var numGames = self.vue.games.length;
+    $.post(
+      gamesURL,
+      {
+        start_idx: numGames,
+        end_idx: numGames + 20,
+        activityFilter: self.vue.activityFilter,
+        levelFilter: self.vue.levelFilter
+      },
+      function(data) {
+        self.extend(self.vue.games, data.games);
+        self.vue.hasMore = data.hasMore;
+        enumerate(self.vue.games);
+      }
+    );
+  };
 
   self.addGame = function() {
     $.post(
@@ -201,7 +217,7 @@ var app = function() {
     },
     methods: {
       addGameButton: self.addGameButton,
-      getMore: self.getMore,
+      loadMore: self.loadMore,
       addGame: self.addGame,
       cancelAddGame: self.cancelAddGame,
       deleteGame: self.deleteGame,

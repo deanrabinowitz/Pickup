@@ -1,5 +1,5 @@
 main.background {
-  background: #fafafa
+  background: #fafafa;
 }
 
 /* line 1, ../sass/_main.scss */
@@ -68,4 +68,8 @@ div.disabled {
 
 form.selector {
   margin-bottom: 2px;
+}
+
+#filter-div {
+  padding-left: 60px;
 }

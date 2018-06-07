@@ -18,7 +18,8 @@
     <div id="vue-div" class="display:none container">
 
         <!-- Filter div -->
-        <div class="third">
+
+        <div id="filter-div" class="third">
             <h3>
                 Filters
             </h3>
@@ -124,13 +125,10 @@
                     <a class="btn rounded banner-theme" v-if="user != null && user.email != null && !game.players.includes(user.id)" v-on:click="joinGame(game)">Join Game</a>
                     <a class="btn rounded" v-if="user != null && user.email != null && game.players.includes(user.id)" v-on:click="leaveGame(game)">Leave Game</a>
                     <div v-if="user != null && game.userEmail == user.email" class="buttons">
-                        <a class="btn rounded">
-                            <i class="fa fa-edit fa-lg"></i>
-                        </a>
                         <a class="btn rounded red" v-on:click="deleteGame(game)">
                             <i class="fa fa-trash fa-lg"></i>
                         </a>
-                    </div>            
+                    </div>
                 </div>
                 <hr>
                 <h6>Comments</h6>
@@ -141,6 +139,10 @@
                     </div>
                     <input v-on:keyup.enter="addComment(game.id, formComment, game)" placeholder="Add a comment" v-model="formComment">
                 </div>
+            </div>
+
+            <div v-if="hasMore">
+                <button class="btn btn-default rounded banner-theme center" v-on:click="loadMore">Load More</button>
             </div>
         </div>
 
