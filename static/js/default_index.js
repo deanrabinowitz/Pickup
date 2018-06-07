@@ -100,7 +100,7 @@ var app = function() {
     var user = self.vue.user;
     var comment = {
       authorID: user.id,
-      author_name: user.firstName + " " + user.lastName[0] + ".",
+      author_name: user.firstName + " " + user.lastName[0],
       comment_content: commentContent,
       game: gameID
     };
