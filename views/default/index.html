@@ -26,18 +26,18 @@
             <h6>
                 Activities
             </h6>
-            <div v-for="option in activities">
+            <div v-for="option in activities" class="filter-item">
                 <input type="checkbox" v-bind:id="option.value" v-bind:value="option.value" v-model="activityFilter">
                 <label for="option.value">${option.text}</label>
             </div>
             <h6>
                 Skill Level
             </h6>
-            <div v-for="option in levels">
+            <div v-for="option in levels" class="filter-item">
                 <input type="checkbox" v-bind:id="option.value" v-bind:value="option.value" v-model="levelFilter">
                 <label for="option.value">${option.text}</label>
             </div>
-            <button v-on:click="getGames" class="btn rounded">Filter</button>
+            <button v-on:click="getGames" class="btn rounded filter-button banner-theme">Filter</button>
         </div>
 
         <!-- Activity div -->

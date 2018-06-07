@@ -103,3 +103,18 @@ h6 {
 #filter-div {
   padding-left: 80px;
 }
+
+div.filter-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+div.filter-item label {
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+button.filter-button {
+  margin-top: 12px;
+}
