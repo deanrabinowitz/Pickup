@@ -99,7 +99,7 @@
                         <i class="fa fa-plus"></i> Add Game
                     </button>
                     <div v-if="!user" class="login_button">
-                        <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
+                        <a href="{{=URL('default', 'user')}}" class="btn rounded banner-theme">Login</a>
                     </div>
                     <button v-if="isAddingGame" class="btn rounded banner-theme" v-on:click="addGame()">
                         <i class="fa fa-plus"></i> Add
