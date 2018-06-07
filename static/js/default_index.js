@@ -207,7 +207,8 @@ var app = function() {
       deleteGame: self.deleteGame,
       joinGame: self.joinGame,
       leaveGame: self.leaveGame,
-      addComment: self.addComment
+      addComment: self.addComment,
+      getGames: self.getGames
     }
   });
 

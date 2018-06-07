@@ -19,11 +19,31 @@
 
         <!-- Filter div -->
         <div class="third">
-            Filters go here.
+            <h3>
+                Filters
+            </h3>
+            <h6>
+                Activities
+            </h6>
+            <div v-for="option in activities">
+                <input type="checkbox" v-bind:id="option.value" v-bind:value="option.value" v-model="activityFilter">
+                <label for="option.value">${option.text}</label>
+            </div>
+            <h6>
+                Levels
+            </h6>
+            <div v-for="option in levels">
+                <input type="checkbox" v-bind:id="option.value" v-bind:value="option.value" v-model="levelFilter">
+                <label for="option.value">${option.text}</label>
+            </div>
+            <button v-on:click="getGames" class="btn rounded">Filter</button>
         </div>
 
         <!-- Activity div -->
         <div class="twothirds">
+            <h2>
+                Games
+            </h2>
             <div v-if="isAddingGame">
                 <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
                     <div class="form-group">
@@ -72,7 +92,8 @@
 
 
             <div class="button_bar">
-                <button v-if="!isAddingGame && user !== null" class="btn rounded banner-theme" v-on:click="addGameButton()" :disabled="!loggedIn" v-bind:class="{'disabled': !loggedIn}">
+                <button v-if="!isAddingGame && user !== null" class="btn rounded banner-theme" v-on:click="addGameButton()" :disabled="!loggedIn"
+                    v-bind:class="{'disabled': !loggedIn}">
                     <i class="fa fa-plus"></i> Add Game
                 </button>
                 <div v-if="!user" class="login_button">
@@ -88,7 +109,7 @@
 
             <div v-for="game in games" class="game">
                 <div class="game_text">
-                    <div class="game_title">${game.title}</div>
+                    <h6 class="game_title">${game.title}</h6>
                     <div class="game_content">${game.activity}</div>
                     <div class="game_content">${game.gameLevel}</div>
                     <div class="game_content">${game.gameDate}</div>
