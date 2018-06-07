@@ -190,6 +190,22 @@ var app = function() {
     ];
   };
 
+  self.getActivityText = function(myActivity) {
+    for (var activity in self.vue.activities) {
+      if (myActivity === self.vue.activities[activity].value) {
+        return self.vue.activities[activity].text;
+      }
+    }
+  };
+
+  self.getLevelText = function(myLevel) {
+    for (var level in self.vue.levels) {
+      if (myLevel === self.vue.levels[level].value) {
+        return self.vue.levels[level].text;
+      }
+    }
+  };
+
   // Complete as needed.
   self.vue = new Vue({
     el: "#vue-div",
@@ -225,7 +241,9 @@ var app = function() {
       joinGame: self.joinGame,
       leaveGame: self.leaveGame,
       addComment: self.addComment,
-      getGames: self.getGames
+      getGames: self.getGames,
+      getActivityText: self.getActivityText,
+      getLevelText: self.getLevelText
     }
   });
 
