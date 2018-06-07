@@ -516,6 +516,7 @@ textarea.error {
 }
 .menu.right {
   float: right;
+  margin-top: 5;
 }
 .menu a {
   padding: 0 15px;
