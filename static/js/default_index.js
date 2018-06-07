@@ -95,7 +95,7 @@ var app = function() {
     if (commentContent === "") {
       return;
     }
-    self.vue.formComment = "";
+    game.formComment = "";
     var user = self.vue.user;
     var comment = {
       authorID: user.id,
@@ -222,7 +222,6 @@ var app = function() {
       formActivity: "basketball",
       formLevel: "allLevels",
       formLocation: null,
-      formComment: "",
       levels: self.getLevels(),
       activities: self.getActivities(),
       activityFilter: self.getActivities().map(function(activity) {
