@@ -42,115 +42,117 @@
 
         <!-- Activity div -->
         <div class="twothirds">
-            <h2>
-                Games
-            </h2>
-            <div v-if="isAddingGame">
-                <form action="#" v-on:submit.prevent class="form-horizontal selector" enctype="multipart/form-data" method="post">
-                    <!-- <div class="form-group">
+            <div class="games-list">
+                <h2>
+                    Games
+                </h2>
+                <div v-if="isAddingGame">
+                    <form action="#" v-on:submit.prevent class="form-horizontal selector" enctype="multipart/form-data" method="post">
+                        <!-- <div class="form-group">
                         <div>
                             <input class="form-control string" v-model="formTitle" placeholder="Title" type="text" />
                         </div>
                     </div> -->
-                    <select v-model="formActivity">
-                        <option v-for="option in activities" v-bind:value="option.value">
-                            ${option.text}
-                        </option>
-                    </select>
-                    <select v-model="formLevel">
-                        <option v-for="option in levels" v-bind:value="option.value">
-                            ${option.text}
-                        </option>
-                    </select>
-                </form>
-            </div>
-            <div class="form-group" id="timePicker" style="display:none">
-                <p>
-                    <input id="datePicker" type="text" class="date form-control string" autocomplete="off" placeholder="Date" />
-                    <input id="startTimePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="From"
-                    />
-                    <input id="endTimePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="To"
-                    />
-                </p>
-            </div>
+                        <select v-model="formActivity">
+                            <option v-for="option in activities" v-bind:value="option.value">
+                                ${option.text}
+                            </option>
+                        </select>
+                        <select v-model="formLevel">
+                            <option v-for="option in levels" v-bind:value="option.value">
+                                ${option.text}
+                            </option>
+                        </select>
+                    </form>
+                </div>
+                <div class="form-group" id="timePicker" style="display:none">
+                    <p>
+                        <input id="datePicker" type="text" class="date form-control string" autocomplete="off" placeholder="Date" />
+                        <input id="startTimePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="From"
+                        />
+                        <input id="endTimePicker" type="text" class="time ui-timepicker-input form-control string" autocomplete="off" placeholder="To"
+                        />
+                    </p>
+                </div>
 
-            <div v-if="isAddingGame">
-                <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
-                    <div class="form-group">
-                        <div>
-                            <input class="form-control string" v-model="formLocation" placeholder="Location" />
+                <div v-if="isAddingGame">
+                    <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
+                        <div class="form-group">
+                            <div>
+                                <input class="form-control string" v-model="formLocation" placeholder="Location" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <textarea class="form-control string" v-model="formDescription" placeholder="Description">
+                        <div class="form-group">
+                            <div>
+                                <textarea class="form-control string" v-model="formDescription" placeholder="Description">
                             </textarea>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <div class="button_bar">
+                    <button v-if="!isAddingGame && user !== null" class="btn rounded banner-theme" v-on:click="addGameButton()" :disabled="!loggedIn"
+                        v-bind:class="{'disabled': !loggedIn}">
+                        <i class="fa fa-plus"></i> Add Game
+                    </button>
+                    <div v-if="!user" class="login_button">
+                        <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
+                    </div>
+                    <button v-if="isAddingGame" class="btn rounded banner-theme" v-on:click="addGame()">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                    <button v-if="isAddingGame" class="btn rounded" v-on:click="cancelAddGame()">
+                        <i class="fa fa-times"></i> Cancel
+                    </button>
+                </div>
+
+                <div v-for="game in games" class="game">
+                    <div class="game_text">
+                        <!-- <h6 class="game_title">${game.title}</h6> -->
+                        <div class="game-flex-container">
+                            <div class="game-left-item">
+                                <h5 class="game_content">${getActivityText(game.activity)} at ${game.gameLocation}</h5>
+                                <h6 class="game_content">${getLevelText(game.gameLevel)}</h6>
+                            </div>
+                            <div class="game-right-item">
+                                <h5 class="game_content">When: ${game.gameDate}</h5>
+                                <h6 class="game_content">${game.startTime} - ${game.endTime}</h6>
+                            </div>
+                        </div>
+                        <!-- <div class="game_content">${game.gameLocation}</div> -->
+                        <div class="game_content">${game.description}</div>
+                    </div>
+                    <div class="game-flex-container game-flex-container-bottom">
+                        <div class="game_content">
+                            ${game.players.length} ${game.players.length===1 ? "person" : "people"} playing
+                        </div>
+                        <div class="button_list">
+                            <a class="btn rounded banner-theme" v-if="user != null && user.email != null && !game.players.includes(user.id)" v-on:click="joinGame(game)">Join Game</a>
+                            <a class="btn rounded" v-if="user != null && user.email != null && game.players.includes(user.id)" v-on:click="leaveGame(game)">Leave Game</a>
+                            <div v-if="user != null && game.userEmail == user.email" class="buttons">
+                                <a class="btn rounded red" v-on:click="deleteGame(game)">
+                                    <i class="fa fa-trash fa-lg"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </form>
-
-            </div>
-
-
-            <div class="button_bar">
-                <button v-if="!isAddingGame && user !== null" class="btn rounded banner-theme" v-on:click="addGameButton()" :disabled="!loggedIn"
-                    v-bind:class="{'disabled': !loggedIn}">
-                    <i class="fa fa-plus"></i> Add Game
-                </button>
-                <div v-if="!user" class="login_button">
-                    <a href="{{=URL('default', 'user')}}" class="btn">Login</a>
-                </div>
-                <button v-if="isAddingGame" class="btn rounded banner-theme" v-on:click="addGame()">
-                    <i class="fa fa-plus"></i> Add
-                </button>
-                <button v-if="isAddingGame" class="btn rounded" v-on:click="cancelAddGame()">
-                    <i class="fa fa-times"></i> Cancel
-                </button>
-            </div>
-
-            <div v-for="game in games" class="game">
-                <div class="game_text">
-                    <!-- <h6 class="game_title">${game.title}</h6> -->
-                    <div class="game-flex-container">
-                        <div class="game-left-item">
-                            <h5 class="game_content">${getActivityText(game.activity)} at ${game.gameLocation}</h5>
-                            <h6 class="game_content">${getLevelText(game.gameLevel)}</h6>
+                    <hr>
+                    <h6>Comments</h6>
+                    <div class="comments">
+                        <div v-for="comment in game.comments" class="comment">
+                            <span class="comment-author-name">${comment.author_name}:</span>
+                            <span class="comment-content">${comment.comment_content}</span>
                         </div>
-                        <div class="game-right-item">
-                            <h5 class="game_content">When: ${game.gameDate}</h5>
-                            <h6 class="game_content">${game.startTime} - ${game.endTime}</h6>
-                        </div>
-                    </div>
-                    <!-- <div class="game_content">${game.gameLocation}</div> -->
-                    <div class="game_content">${game.description}</div>
-                </div>
-                <div class="game-flex-container game-flex-container-bottom">
-                    <div class="game_content">
-                        ${game.players.length} ${game.players.length===1 ? "person" : "people"} playing
-                    </div>
-                    <div class="button_list">
-                        <a class="btn rounded banner-theme" v-if="user != null && user.email != null && !game.players.includes(user.id)" v-on:click="joinGame(game)">Join Game</a>
-                        <a class="btn rounded" v-if="user != null && user.email != null && game.players.includes(user.id)" v-on:click="leaveGame(game)">Leave Game</a>
-                        <div v-if="user != null && game.userEmail == user.email" class="buttons">
-                            <a class="btn rounded red" v-on:click="deleteGame(game)">
-                                <i class="fa fa-trash fa-lg"></i>
-                            </a>
-                        </div>
+                        <input v-on:keyup.enter="addComment(game.id, formComment, game)" placeholder="Add a comment" v-model="formComment">
                     </div>
                 </div>
-                <hr>
-                <h6>Comments</h6>
-                <div class="comments">
-                    <div v-for="comment in game.comments" class="comment">
-                        <span class="comment-author-name">${comment.author_name}:</span>
-                        <span class="comment-content">${comment.comment_content}</span>
-                    </div>
-                    <input v-on:keyup.enter="addComment(game.id, formComment, game)" placeholder="Add a comment" v-model="formComment">
-                </div>
-            </div>
 
-            <div v-if="hasMore">
-                <button class="btn btn-default rounded banner-theme center" v-on:click="loadMore">Load More</button>
+                <div v-if="hasMore">
+                    <button class="btn btn-default rounded banner-theme center" v-on:click="loadMore">Load More</button>
+                </div>
             </div>
         </div>
 

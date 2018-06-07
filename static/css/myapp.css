@@ -56,6 +56,10 @@ div.button_bar {
   margin-left: 10px;
 }
 
+div.games-list {
+  margin-right: 60px;
+}
+
 div.game hr {
   border: 1px gray solid;
   margin-bottom: 5px;
