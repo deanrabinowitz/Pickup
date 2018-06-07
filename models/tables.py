@@ -22,7 +22,7 @@ def get_user_name():
 db.define_table('game',
                 Field('user_email', default=get_user_email()),
                 Field('title', 'text'),
-                Field('description', 'text'),
+                Field('description', 'text', default="No description"),
                 Field('activity', 'text'),
                 Field('game_level', 'text'),
                 Field('start_time', 'text'),

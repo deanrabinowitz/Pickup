@@ -57,11 +57,6 @@
                 </h2>
                 <div v-if="isAddingGame">
                     <form action="#" v-on:submit.prevent class="form-horizontal selector" enctype="multipart/form-data" method="post">
-                        <!-- <div class="form-group">
-                        <div>
-                            <input class="form-control string" v-model="formTitle" placeholder="Title" type="text" />
-                        </div>
-                    </div> -->
                         <select v-model="formActivity">
                             <option v-for="option in activities" v-bind:value="option.value">
                                 ${option.text}
