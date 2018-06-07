@@ -45,7 +45,7 @@
                 Games
             </h2>
             <div v-if="isAddingGame">
-                <form action="#" v-on:submit.prevent class="form-horizontal" enctype="multipart/form-data" method="post">
+                <form action="#" v-on:submit.prevent class="form-horizontal selector" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                         <div>
                             <input class="form-control string" v-model="formTitle" placeholder="Title" type="text" />
@@ -130,15 +130,7 @@
                         <a class="btn rounded red" v-on:click="deleteGame(game)">
                             <i class="fa fa-trash fa-lg"></i>
                         </a>
-                    </div>
-                    <div v-else class="buttons">
-                        <a class="btn rounded" style="background-color: gray">
-                            <i class="fa fa-edit fa-lg"></i>
-                        </a>
-                        <a class="btn rounded" style="background-color: gray">
-                            <i class="fa fa-trash fa-lg"></i>
-                        </a>
-                    </div>
+                    </div>            
                 </div>
                 <hr>
                 <h6>Comments</h6>

@@ -65,3 +65,7 @@ div.game hr {
 div.disabled {
   background-color: grey;
 }
+
+form.selector {
+  margin-bottom: 2px;
+}
