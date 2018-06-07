@@ -3,7 +3,7 @@
 def get_games():
     start_idx = int(request.vars.start_idx) if request.vars.start_idx is not None else 0
     end_idx = int(request.vars.end_idx) if request.vars.end_idx is not None else 0
-    rows = db(db.game.activity.contains(activityFilter, all=False) & db.game.level.contains(levelFilter, all=False)).select(db.game.ALL)
+    rows = db(db.game.activity.contains(request.vars['activityFilter[]'], all=False) & db.game.game_level.contains(request.vars['levelFilter[]'], all=False)).select(db.game.ALL)
     logged_in = auth.user is not None
     games = []
     has_more = False

@@ -192,10 +192,10 @@ var app = function() {
       formComment: "",
       levels: self.getLevels(),
       activities: self.getActivities(),
-      activityFilter: self.vue.filter.activities.map(function(activity) {
+      activityFilter: self.getActivities().map(function(activity) {
         return activity.value;
       }),
-      levelFilter: self.vue.filter.levels.map(function(level) {
+      levelFilter: self.getLevels().map(function(level) {
         return level.value;
       })
     },
