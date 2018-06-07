@@ -75,6 +75,7 @@ var app = function() {
         description: self.vue.formDescription
       },
       function(data) {
+        $("#datePicker").val("");
         $("#startTimePicker").val("");
         $("#endTimePicker").val("");
         $("#timePicker").hide();
@@ -84,8 +85,8 @@ var app = function() {
         self.vue.formTitle = "";
         self.vue.formDescription = "";
         self.vue.formLocation = "";
-        self.vue.formActivity = "activity";
-        self.vue.formLevel = "level";
+        self.vue.formActivity = "basketball";
+        self.vue.formLevel = "allLevels";
       }
     );
   };
