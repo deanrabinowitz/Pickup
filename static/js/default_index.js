@@ -32,7 +32,8 @@ var app = function() {
         start_idx: 0,
         end_idx: 10,
         activityFilter: self.vue.activityFilter,
-        levelFilter: self.vue.levelFilter
+        levelFilter: self.vue.levelFilter,
+        locationFilter: self.vue.locationFilter
       },
       function(data) {
         self.vue.games = data.games;
@@ -238,7 +239,8 @@ var app = function() {
       }),
       levelFilter: self.getLevels().map(function(level) {
         return level.value;
-      })
+      }),
+      locationFilter: ""
     },
     methods: {
       addGameButton: self.addGameButton,

@@ -37,6 +37,12 @@
                 <input type="checkbox" v-bind:id="option.value" v-bind:value="option.value" v-model="levelFilter">
                 <label for="option.value">${option.text}</label>
             </div>
+            <h6>
+                Location
+            </h6>
+            <div>
+                <input class="form-control string" v-model="locationFilter" placeholder="Location" />
+            </div>
             <div class="filter-buttons">
                 <button v-on:click="resetFilters" class="btn rounded">Reset</button>
                 <button v-on:click="getGames" class="btn rounded filter-buttons banner-theme">Filter</button>
