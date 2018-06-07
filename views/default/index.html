@@ -37,7 +37,10 @@
                 <input type="checkbox" v-bind:id="option.value" v-bind:value="option.value" v-model="levelFilter">
                 <label for="option.value">${option.text}</label>
             </div>
-            <button v-on:click="getGames" class="btn rounded filter-button banner-theme">Filter</button>
+            <div class="filter-buttons">
+                <button v-on:click="resetFilters" class="btn rounded">Reset</button>
+                <button v-on:click="getGames" class="btn rounded filter-buttons banner-theme">Filter</button>
+            </div>
         </div>
 
         <!-- Activity div -->

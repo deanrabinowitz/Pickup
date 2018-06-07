@@ -206,6 +206,15 @@ var app = function() {
     }
   };
 
+  self.resetFilters = function() {
+    self.vue.activityFilter = self.getActivities().map(function(activity) {
+      return activity.value;
+    });
+    self.vue.levelFilter = self.getLevels().map(function(level) {
+      return level.value;
+    });
+  };
+
   // Complete as needed.
   self.vue = new Vue({
     el: "#vue-div",
@@ -242,7 +251,8 @@ var app = function() {
       addComment: self.addComment,
       getGames: self.getGames,
       getActivityText: self.getActivityText,
-      getLevelText: self.getLevelText
+      getLevelText: self.getLevelText,
+      resetFilters: self.resetFilters
     }
   });
 
